@@ -97,7 +97,8 @@ int main(int argc, char *argv[])
                 type = optarg;
                 break;
             case 'p':
-                prefix = optarg;
+                fprintf(stdout, "%s\n", optarg);
+                prefix = NULL;
                 break;
             case 'b':
                 basename = optarg;
@@ -152,7 +153,9 @@ int main(int argc, char *argv[])
         strchrreplace(basename, '.', '_');
     }
 
-    fprintf(stdout, "%s\n", prefix);
+    if (prefix) {
+        fprintf(stdout, "%s\n", prefix);
+    }
 
     fprintf(stdout, "%s %s_data[] = {\n", type, basename);
 
